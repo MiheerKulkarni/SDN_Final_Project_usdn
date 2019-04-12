@@ -41,7 +41,7 @@ for b in brac:
 
 sum =0
 AvRTT = 0
-energy_dict = {9:28588,3:18788,7:20388,5:18688,8:21588,11:21288,10:22188,6:17888,4:20288,1:32012}
+energy_dict = {9:28.588,3:18.788,7:20.388,5:18.688,8:21.588,11:21.288,10:22.188,6:17.888,4:20.288,1:32.012}
 rtt_dict = {9:198.69,3:196.89,7:196.78,5:196.89,8:196.81,11:196.85,1:187.12,10:196.84,6:191.79,4:196.88}
 delay_dict = {6:230,11:160,10:230,4:234}
 for j in power_list:
@@ -52,6 +52,7 @@ for j in power_list:
         AvRTT = AvRTT + j
 
 mean_energy = sum/10
+mean_energy = mean_energy/1000
 AvRTT = AvRTT/10
 sd_rtt = []
 sd_energy = []
@@ -70,15 +71,15 @@ for sd in sd_rtt:
     final_sd_rtt = sd+final_sd_rtt
 
 
-print("Average energy consumption is:" + str(mean_energy) + " mJ")
+print("Average energy consumption is:" + str(mean_energy) + " J")
 print("Average RTT is :" + str(AvRTT)+ "ms")
-print("Standard Deviation of energy" + str(final_sd_energy/10) + " mJ")
-print("Standard Deviation of RTT" + str(final_sd_rtt/10) + " ms")
+print("Standard Deviation of energy" + str(final_sd_energy/10000) + " J")
+print("Standard Deviation of RTT" + str(final_sd_rtt/10000) + " ms")
 
 plt.figure('Figure for energy consumption')
 plt.bar(list(energy_dict.keys()),list(energy_dict.values()))
 plt.xlabel('Motes')
-plt.ylabel('Energy in (mJ)')
+plt.ylabel('Energy in (J)')
 plt.show()
 
 plt.figure('Figure for RTT')
